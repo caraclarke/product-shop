@@ -19032,14 +19032,31 @@ var NavBar = React.createClass({
   displayName: 'NavBar',
 
   render: function () {
+
+    var navStyle = { // prefixes capitalized, otherwise camelCase
+      WebkitBoxShadow: "0 0 4px rgba(0,0,0.4)",
+      MozBoxShadow: "0 0 4px rgba(0,0,0.4)",
+      boxShadow: "0 0 4px rgba(0,0,0.4)",
+      borderRadius: 0
+    };
+
+    var titleStyle = {};
+    var linkStyle = {};
+
+    if (this.props.bgColor) navStyle.background = this.props.bgColor;
+
+    if (this.props.titleColor) titleStyle.color = this.props.titleColor;
+
+    if (this.props.linkColor) linkStyle.color = this.props.linkColor;
+
     var createLinkItem = function (item, index) {
-      return React.createElement(NavItem, { key: item.title + index, href: item.href, title: item.title });
+      return React.createElement(NavItem, { aStyle: linkStyle, key: item.title + index, href: item.href, title: item.title });
       // making key = getting title from array in main.jsx and adding index to create unique key
     };
 
     return React.createElement(
       'nav',
-      { className: 'navbar navbar-default' },
+      { style: navStyle, className: 'navbar navbar-default' },
       React.createElement(
         'div',
         { className: 'navbar-header' },
@@ -19052,7 +19069,7 @@ var NavBar = React.createClass({
         ),
         React.createElement(
           'a',
-          { className: 'navbar-brand', href: '#' },
+          { style: titleStyle, className: 'navbar-brand', href: '#' },
           'Product Shop'
         )
       ),
@@ -19066,7 +19083,7 @@ var NavBar = React.createClass({
         )
       )
     );
-  }
+  } // end render
 });
 
 module.exports = NavBar;
@@ -19083,7 +19100,7 @@ var NavItem = React.createClass({
       null,
       React.createElement(
         'a',
-        { href: this.props.href },
+        { style: this.props.aStyle, href: this.props.href },
         this.props.title
       )
     );
@@ -19108,6 +19125,6 @@ var navLinks = [{
   href: "#blog"
 }];
 
-ReactDOM.render(React.createElement(NavBar, { navData: navLinks }), document.getElementById('nav'));
+ReactDOM.render(React.createElement(NavBar, { bgColor: 'red', titleColor: 'white', linkColor: 'yellow', navData: navLinks }), document.getElementById('nav'));
 
 },{"./components/nav/navbar.jsx":159,"react":158,"react-dom":29}]},{},[161]);
