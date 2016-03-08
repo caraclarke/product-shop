@@ -1,8 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var List = require('./components/List.jsx');
+var NavBar = require('./components/nav/navbar.jsx');
 
 ReactDOM.render(
-  <List />,
-  document.getElementById('ingredients')
+  <NavBar />,
+  document.getElementById('nav')
 );
