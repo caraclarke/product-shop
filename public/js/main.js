@@ -19026,28 +19026,43 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":53}],159:[function(require,module,exports){
 var React = require('react');
+var NavItem = require('./navitem.jsx');
 
 var NavBar = React.createClass({
-  displayName: "NavBar",
+  displayName: 'NavBar',
 
   render: function () {
+    var createLinkItem = function (item, index) {
+      return React.createElement(NavItem, { key: item.title + index, href: item.href, title: item.title });
+      // making key = getting title from array in main.jsx and adding index to create unique key
+    };
+
     return React.createElement(
-      "nav",
-      { className: "navbar navbar-default" },
+      'nav',
+      { className: 'navbar navbar-default' },
       React.createElement(
-        "div",
-        { className: "navbar-header" },
+        'div',
+        { className: 'navbar-header' },
         React.createElement(
-          "button",
-          { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#nav-collapse" },
-          React.createElement("span", { className: "icon-bar" }),
-          React.createElement("span", { className: "icon-bar" }),
-          React.createElement("span", { className: "icon-bar" })
+          'button',
+          { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#nav-collapse' },
+          React.createElement('span', { className: 'icon-bar' }),
+          React.createElement('span', { className: 'icon-bar' }),
+          React.createElement('span', { className: 'icon-bar' })
         ),
         React.createElement(
-          "a",
-          { className: "navbar-brand", href: "#" },
-          "Product Shop"
+          'a',
+          { className: 'navbar-brand', href: '#' },
+          'Product Shop'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'collapse navbar-collapse', id: 'nav-collapse' },
+        React.createElement(
+          'ul',
+          { className: 'nav navbar-nav' },
+          this.props.navData.map(createLinkItem)
         )
       )
     );
@@ -19056,11 +19071,43 @@ var NavBar = React.createClass({
 
 module.exports = NavBar;
 
-},{"react":158}],160:[function(require,module,exports){
+},{"./navitem.jsx":160,"react":158}],160:[function(require,module,exports){
+var React = require('react');
+
+var NavItem = React.createClass({
+  displayName: 'NavItem',
+
+  render: function () {
+    return React.createElement(
+      'li',
+      null,
+      React.createElement(
+        'a',
+        { href: this.props.href },
+        this.props.title
+      )
+    );
+  }
+});
+
+module.exports = NavItem;
+
+},{"react":158}],161:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
 var NavBar = require('./components/nav/navbar.jsx');
 
-ReactDOM.render(React.createElement(NavBar, null), document.getElementById('nav'));
+var navLinks = [{
+  title: "Home",
+  href: "#"
+}, {
+  title: "Courses",
+  href: "#courses"
+}, {
+  title: "Blog",
+  href: "#blog"
+}];
 
-},{"./components/nav/navbar.jsx":159,"react":158,"react-dom":29}]},{},[160]);
+ReactDOM.render(React.createElement(NavBar, { navData: navLinks }), document.getElementById('nav'));
+
+},{"./components/nav/navbar.jsx":159,"react":158,"react-dom":29}]},{},[161]);
