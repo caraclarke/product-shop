@@ -19125,6 +19125,6 @@ var navLinks = [{
   href: "#blog"
 }];
 
-ReactDOM.render(React.createElement(NavBar, { bgColor: 'red', titleColor: 'white', linkColor: 'yellow', navData: navLinks }), document.getElementById('nav'));
+ReactDOM.render(React.createElement(NavBar, { bgColor: '#fff', titleColor: '#3097d1', linkColor: '', navData: navLinks }), document.getElementById('nav'));
 
 },{"./components/nav/navbar.jsx":159,"react":158,"react-dom":29}]},{},[161]);
