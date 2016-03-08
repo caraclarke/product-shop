@@ -2,7 +2,7 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
-var HomePage = React.createclass({
+var HomePage = React.createClass({
   render: function() {
     return(
       <div>
