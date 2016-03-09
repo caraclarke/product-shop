@@ -1,7 +1,20 @@
 var React = require('react');
 var NavBar = require('./nav/navbar.jsx');
 
-var navLinks = [{ title: "Home", href: "/" }];
+var navLinks = [
+  {
+    title: "Home",
+    href: "/"
+  },
+  {
+    title: "iOS Course",
+    href: "/product/55"
+  },
+  {
+    title: "Angular Course",
+    href: "/product/67"
+  }
+];
 
 var BasePage = React.createClass({
   render: function() {

@@ -10,6 +10,10 @@ var ProductPage = React.createClass({
     this.setState({pId: this.props.params.productId});
     // if there are parameters passed in from route it will be available via this.props.params
   },
+  componentWillReceiveProps: function(nextProps) {
+    // called everytime property changes
+    this.setState({pId: nextProps.params.productId});
+  },
   // get data from state and show it in header
   render: function() {
     return(

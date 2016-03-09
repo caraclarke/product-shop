@@ -23888,7 +23888,16 @@ module.exports = require('./lib/React');
 var React = require('react');
 var NavBar = require('./nav/navbar.jsx');
 
-var navLinks = [{ title: "Home", href: "/" }];
+var navLinks = [{
+  title: "Home",
+  href: "/"
+}, {
+  title: "iOS Course",
+  href: "/product/55"
+}, {
+  title: "Angular Course",
+  href: "/product/67"
+}];
 
 var BasePage = React.createClass({
   displayName: 'BasePage',
@@ -23965,6 +23974,10 @@ var ProductPage = React.createClass({
     this.setState({ pId: this.props.params.productId });
     // if there are parameters passed in from route it will be available via this.props.params
   },
+  componentWillReceiveProps: function (nextProps) {
+    // called everytime property changes
+    this.setState({ pId: nextProps.params.productId });
+  },
   // get data from state and show it in header
   render: function () {
     return React.createElement(
@@ -23981,6 +23994,7 @@ module.exports = ProductPage;
 },{"react":216}],220:[function(require,module,exports){
 var React = require('react');
 var NavItem = require('./navitem.jsx');
+var Link = require('react-router').Link;
 
 var NavBar = React.createClass({
   displayName: 'NavBar',
@@ -24022,7 +24036,7 @@ var NavBar = React.createClass({
           React.createElement('span', { className: 'icon-bar' })
         ),
         React.createElement(
-          'a',
+          Link,
           { style: titleStyle, className: 'navbar-brand', to: '/' },
           'Product Shop'
         )
@@ -24042,7 +24056,7 @@ var NavBar = React.createClass({
 
 module.exports = NavBar;
 
-},{"./navitem.jsx":221,"react":216}],221:[function(require,module,exports){
+},{"./navitem.jsx":221,"react":216,"react-router":59}],221:[function(require,module,exports){
 var React = require('react');
 var Link = require('react-router').Link;
 
