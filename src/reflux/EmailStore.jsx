@@ -6,7 +6,7 @@ var EmailStore = Reflux.createStore({
   listenables: [Actions],
   submitEmail: function(subscriber) {
     HTTP.post('/subscribers', subscriber)
-      .then(function(reponse) {
+      .then(function(response) {
         var msg = "";
         
         if (response.state === 200) {
