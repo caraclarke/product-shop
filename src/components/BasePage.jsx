@@ -1,5 +1,6 @@
 var React = require('react');
 var NavBar = require('./nav/navbar.jsx');
+var LeadCapture = require('./forms/LeadCapture.jsx');
 
 var navLinks = [
   {
@@ -21,7 +22,16 @@ var BasePage = React.createClass({
     return(
       <div>
         <NavBar bgColor="#fff" titleColor="#3097d1" linkColor="" navData={navLinks}/>
-        {this.props.children}
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-8 col-md-8">
+              {this.props.children}
+            </div>
+            <div className="col-sm-4 col-md-4">
+              <LeadCapture />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
