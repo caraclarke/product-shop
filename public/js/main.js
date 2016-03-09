@@ -26029,10 +26029,10 @@ var EmailStore = Reflux.createStore({
     HTTP.post('/subscribers', subscriber).then(function (response) {
       var msg = "";
 
-      if (response.state === 200) {
-        msg = "Email submitted!";
+      if (response.status === 200) {
+        msg = "Submission success";
       } else {
-        msg = "Submission failed";
+        msg = "Submission failure!";
       }
 
       this.trigger(msg);
