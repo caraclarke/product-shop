@@ -24084,40 +24084,78 @@ var EmailField = require('./EmailField.jsx');
 var NameField = require('./NameField.jsx');
 
 var LeadCapture = React.createClass({
-    displayName: 'LeadCapture',
+  displayName: 'LeadCapture',
 
-    onSubmit: function (e) {
-        if (!this.refs.fieldEmail.state.valid) {
-            //
-        } else {
-                //Send request to email host or server!
-                var httpRequestBody = {
-                    email: this.refs.fieldEmail.state.value,
-                    firstName: this.refs.fieldName.state.value
-                };
+  getInitialState: function () {
+    return { submitted: false };
+  },
+  onSubmit: function (e) {
+    if (!this.refs.fieldEmail.state.valid) {
+      // we get an error
+      console.log('error input in form');
+    } else {
+      // success
+      //Send request to email host or server!
+      var httpRequestBody = {
+        email: this.refs.fieldEmail.state.value,
+        firstName: this.refs.fieldName.state.value
+      };
 
-                this.refs.fieldEmail.clear();
-                this.refs.fieldName.clear();
-            }
-    },
-    render: function () {
-        return React.createElement(
-            'div',
-            { className: 'panel panel-default' },
-            React.createElement(
-                'div',
-                { className: 'panel-body' },
-                React.createElement(NameField, { type: 'First', ref: 'fieldName' }),
-                React.createElement('br', null),
-                React.createElement(EmailField, { ref: 'fieldEmail' }),
-                React.createElement(
-                    'button',
-                    { className: 'btn btn-primary', onClick: this.onSubmit },
-                    'Submit'
-                )
-            )
-        );
+      this.refs.fieldEmail.clear();
+      this.refs.fieldName.clear();
+
+      this.setState({ submitted: true });
     }
+  },
+  render: function () {
+    var successStyle = {
+      color: "green",
+      visibility: this.state.submitted ? "visible" : "hidden"
+    };
+
+    return React.createElement(
+      'div',
+      { className: 'panel panel-default' },
+      React.createElement(
+        'div',
+        { className: 'panel-heading' },
+        React.createElement(
+          'h4',
+          null,
+          'Get Free E-Book'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'panel-body' },
+        React.createElement(NameField, { type: 'First', ref: 'fieldName' }),
+        React.createElement('br', null),
+        React.createElement(EmailField, { ref: 'fieldEmail' }),
+        React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(
+            'div',
+            { className: 'col-sm-6 col-md-6' },
+            React.createElement(
+              'button',
+              { className: 'btn btn-primary', onClick: this.onSubmit },
+              'Submit'
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'col-sm-5 col-md-5' },
+            React.createElement(
+              'h5',
+              { style: successStyle },
+              'Success!'
+            )
+          )
+        )
+      )
+    );
+  }
 });
 
 module.exports = LeadCapture;
