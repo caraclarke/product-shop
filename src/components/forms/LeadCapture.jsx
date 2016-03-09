@@ -19,16 +19,14 @@ var LeadCapture = React.createClass({
     },
     render: function() {
         return (
-            <div className="col-sm-3">
-                <div className="panel panel-default">
-                    <div className="panel-body">
-                        <NameField type="First" ref="fieldName"/>
-                        <br />
-                        <EmailField ref="fieldEmail"/>
-                        <button className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
-                    </div>
-                </div>
-            </div>
+          <div className="panel panel-default">
+              <div className="panel-body">
+                  <NameField type="First" ref="fieldName"/>
+                  <br />
+                  <EmailField ref="fieldEmail"/>
+                  <button className="btn btn-primary" onClick={this.onSubmit}>Submit</button>
+              </div>
+          </div>
         );
     }
 });
