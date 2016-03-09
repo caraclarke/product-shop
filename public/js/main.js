@@ -23938,13 +23938,17 @@ var BasePage = React.createClass({
   displayName: 'BasePage',
 
   render: function () {
+    var style = {
+      paddingTop: 15
+    };
+
     return React.createElement(
       'div',
       null,
       React.createElement(NavBar, { bgColor: '#fff', titleColor: '#3097d1', linkColor: '', navData: navLinks }),
       React.createElement(
         'div',
-        { className: 'container' },
+        { className: 'container', style: style },
         React.createElement(
           'div',
           { className: 'row' },

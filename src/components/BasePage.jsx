@@ -18,11 +18,16 @@ var navLinks = [
 ];
 
 var BasePage = React.createClass({
+  
   render: function() {
+    var style = {
+      paddingTop: 15
+    }
+    
     return(
       <div>
         <NavBar bgColor="#fff" titleColor="#3097d1" linkColor="" navData={navLinks}/>
-        <div className="container">
+        <div className="container" style={style}>
           <div className="row">
             <div className="col-sm-8 col-md-8">
               {this.props.children}
