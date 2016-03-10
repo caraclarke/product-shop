@@ -5,8 +5,8 @@ var Route = require('react-router').Route;
 var Link = require('react-router').Link;
 var IndexRoute = ReactRouter.IndexRoute;
 var HashHistory = require('react-router/lib/HashHistory').default;
+var browserHistory = require('react-router').browserHistory;
 
-// package importing
 // router itself that we need
 // individual routes
 // 'show this when someone gets to the homepage'
@@ -16,7 +16,7 @@ var HomePage = require('./components/HomePage.jsx');
 var ProductPage = require('./components/ProductPage.jsx');
 
 var Routes = (
-  <Router history={HashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={BasePage}>
       <IndexRoute component={HomePage}></IndexRoute>
       <Route path="/product/:productId" component={ProductPage}></Route>
